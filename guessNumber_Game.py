@@ -14,7 +14,8 @@ if __name__ == '__main__':
     # print(right_ans)
     prompt = "\nTake your  First guess ! :  "
     closeness = -1
-    while user_guess := int(input(prompt)):
+    while (user_guess := input(prompt)).isdigit():
+        user_guess = int(user_guess)
         if user_guess > b or user_guess < a:
             print(f"\n Out of Range Guess Fool, Range is {a} to {b} !!  ")
             continue
