@@ -4,18 +4,24 @@ import sys
 
 
 if __name__ == '__main__':
+    # Check for Valid no of arguments
     if len(sys.argv) < 3:
         print("Incorrect Run")
         exit(1)
     a = int(sys.argv[1])
     b = int(sys.argv[2])
 
+    # Get the answer
     right_ans = randint(a, b)
     # print(right_ans)
     prompt = "\nTake your  First guess ! :  "
+
+    # this parameter checks how close we are to answer
     closeness = -1
-    while (user_guess := input(prompt)).isdigit():
+    while (user_guess := input(prompt)).isdigit():   # check for valid input, else exit
         user_guess = int(user_guess)
+
+        # out of range check
         if user_guess > b or user_guess < a:
             print(f"\n Out of Range Guess Fool, Range is {a} to {b} !!  ")
             continue
@@ -24,6 +30,7 @@ if __name__ == '__main__':
             print(" You got it Right King !!")
             break
         else:
+            # using closeness we try to improve guess
             if closeness == -1:
                 closeness = abs(right_ans - user_guess)
                 prompt = "\nGuess Again:  "
